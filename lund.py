@@ -627,7 +627,7 @@ contact_html = """
       <div class='feature-card' style='text-align:center;padding:24px'>
         <div style='font-size:32px;margin-bottom:12px'>🌐</div>
         <div style='font-weight:700;margin-bottom:8px'>Visit Website</div>
-        <a href='https://hirelyzer.com' target='_blank' style='color:#8ab4f8;text-decoration:none;font-weight:600'>https://hirelyzer-ijkfwqydjqz3wqyvjkhegw.streamlit.app/</a>
+        <a href='https://hirelyzer-ijkfwqydjqz3wqyvjkhegw.streamlit.app/' target='_blank' style='color:#8ab4f8;text-decoration:none;font-weight:600'>https://hirelyzer-ijkfwqydjqz3wqyvjkhegw.streamlit.app/</a>
       </div>
     </div>
     <div style='padding:32px;background:linear-gradient(135deg,rgba(79,70,229,0.1),rgba(59,130,246,0.05));border-radius:16px;border:1px solid rgba(79,70,229,0.2)'>
@@ -651,4 +651,5 @@ contact_html = """
 </div>
 """
 st.markdown(contact_html, unsafe_allow_html=True)
+
 
