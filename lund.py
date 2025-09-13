@@ -32,7 +32,7 @@ html, body, [class*="css"]{
 }
 .hero{display:flex;gap:24px;align-items:center;padding:48px 24px;border-radius:18px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));box-shadow:var(--card-shadow);}
 .hero-left{flex:1;}
-.hero-right{width:420px;min-width:320px;cursor:pointer;}
+.hero-right{width:420px;min-width:320px}
 .h-eyebrow{letter-spacing:2px;color:rgba(255,255,255,0.55);font-weight:600}
 .h-title{font-size:48px;font-weight:800;line-height:1.02;margin:8px 0;}
 .h-sub{color:rgba(255,255,255,0.7);font-size:18px;margin-bottom:18px}
@@ -72,7 +72,7 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-# ---------------------- Hero Section with ATS Animation ----------------------
+# ---------------------- Hero Section ----------------------
 hero_html = """
 <div class='hero'>
   <div class='hero-left'>
@@ -86,13 +86,11 @@ hero_html = """
       <button class='btn secondary' onclick="window.location='#pricing'">View Plans</button>
     </div>
   </div>
-
-  <!-- ✅ Animated ATS card -->
-  <div class='hero-right' onclick="animateScore()">
+  <div class='hero-right'>
     <div style='border-radius:14px;padding:18px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.2));box-shadow:0 20px 60px rgba(0,0,0,0.6);border:1px solid rgba(255,255,255,0.03)'>
       <div style='display:flex;justify-content:space-between;align-items:center'>
         <div style='font-weight:800'>Live ATS Preview</div>
-        <div style='font-size:12px;color:rgba(255,255,255,0.6)'>Click to Scan</div>
+        <div style='font-size:12px;color:rgba(255,255,255,0.6)'>Preview</div>
       </div>
       <div style='height:16px'></div>
       <div style='background:rgba(255,255,255,0.02);padding:12px;border-radius:10px'>
@@ -104,16 +102,14 @@ hero_html = """
           <div style='padding:8px 10px;border-radius:999px;background:rgba(0,0,0,0.3);font-size:12px'>Postgres</div>
         </div>
         <div style='height:14px'></div>
-        <div style='font-size:12px;color:rgba(255,255,255,0.6);margin-bottom:6px'>ATS Score</div>
-        <div style='width:100%;height:14px;background:rgba(255,255,255,0.08);border-radius:8px;overflow:hidden;position:relative'>
-          <div id='ats-bar' style='height:100%;width:0%;background:linear-gradient(90deg,#ff6a88,#5f2c82);border-radius:8px;'></div>
+        <div style='display:flex;justify-content:space-between;align-items:center'>
+          <div style='font-size:12px;color:rgba(255,255,255,0.6)'>ATS Score</div>
+          <div style='font-weight:800;font-size:18px'>78%</div>
         </div>
-        <div style='text-align:right;font-weight:800;font-size:18px;margin-top:6px' id='ats-score'>0%</div>
       </div>
     </div>
   </div>
 </div>
-
 <script>
 const phrases = [
   'Upload your resume — get ATS-ready feedback in seconds.',
@@ -133,26 +129,6 @@ function show(){
   },24);
 }
 if(el) show();
-
-// ✅ ATS Score animation (runs each time card is clicked)
-function animateScore(){
-  let target = 78;
-  let bar = document.getElementById("ats-bar");
-  let scoreText = document.getElementById("ats-score");
-  let current = 0;
-  bar.style.width = "0%";
-  scoreText.innerText = "0%";
-
-  let interval = setInterval(()=>{
-    if(current >= target){
-      clearInterval(interval);
-    } else {
-      current++;
-      bar.style.width = current + "%";
-      scoreText.innerText = current + "%";
-    }
-  }, 25);
-}
 </script>
 """
 st.markdown(hero_html, unsafe_allow_html=True)
