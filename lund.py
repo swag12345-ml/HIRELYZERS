@@ -2,7 +2,7 @@ import streamlit as st
 import base64
 from textwrap import dedent
 
-st.set_page_config(page_title="KecxuBot — Cinematic Landing", page_icon="🚀", layout="wide")
+st.set_page_config(page_title="HIRELYZER — Cinematic Landing", page_icon="🚀", layout="wide")
 
 # ---------------------- Helpful utilities ----------------------
 def local_css(css: str):
@@ -640,7 +640,7 @@ contact_html = """
 </div>
 <div class='footer'>
   <div style='max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px'>
-    <div>© 2025 KecxuBot. All rights reserved.</div>
+    <div>© 2025 HIRELYZER. All rights reserved.</div>
     <div style='display:flex;gap:24px'>
       <a href='#' style='color:rgba(255,255,255,0.6);text-decoration:none;font-size:14px'>Privacy Policy</a>
       <a href='#' style='color:rgba(255,255,255,0.6);text-decoration:none;font-size:14px'>Terms of Service</a>
@@ -650,3 +650,4 @@ contact_html = """
 </div>
 """
 st.markdown(contact_html, unsafe_allow_html=True)
+
