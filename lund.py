@@ -2,7 +2,7 @@ import streamlit as st
 import base64
 from textwrap import dedent
 
-st.set_page_config(page_title="KecxuBot — Cinematic Landing", page_icon="🚀", layout="wide")
+st.set_page_config(page_title="HIRELYZER — Cinematic Landing", page_icon="🚀", layout="wide")
 
 # ---------------------- Helpful utilities ----------------------
 def local_css(css: str):
@@ -428,8 +428,8 @@ st.markdown("""
 <div class='nav-container'>
 <div style='display:flex;justify-content:space-between;align-items:center;padding:16px 24px;max-width:1200px;margin:0 auto;'>
   <div style='display:flex;align-items:center;gap:16px' class='logo-container'>
-    <div style='width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,#ff6a88,#5f2c82);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:20px;box-shadow:0 8px 20px rgba(79,70,229,0.3)'>KB</div>
-    <div style='font-weight:800;font-size:18px'>KecxuBot</div>
+    <div style='width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,#ff6a88,#5f2c82);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:20px;box-shadow:0 8px 20px rgba(79,70,229,0.3)'>HL</div>
+    <div style='font-weight:800;font-size:18px'>HIRELYZER</div>
   </div>
   <div style='display:flex;gap:32px;align-items:center'>
     <a href='#features' class='nav-link' style='text-decoration:none;color:rgba(255,255,255,0.75);font-weight:600;font-size:15px'>Features</a>
@@ -621,17 +621,17 @@ contact_html = """
       <div class='feature-card' style='text-align:center;padding:24px'>
         <div style='font-size:32px;margin-bottom:12px'>📧</div>
         <div style='font-weight:700;margin-bottom:8px'>Email Support</div>
-        <a href='mailto:support@kecxubot.com' style='color:#8ab4f8;text-decoration:none;font-weight:600'>support@kecxubot.com</a>
+        <a href='mailto:support@hirelyzer.com' style='color:#8ab4f8;text-decoration:none;font-weight:600'>support@hirelyzer.com</a>
       </div>
       <div class='feature-card' style='text-align:center;padding:24px'>
         <div style='font-size:32px;margin-bottom:12px'>🌐</div>
         <div style='font-weight:700;margin-bottom:8px'>Visit Website</div>
-        <a href='https://kecxubot.com' target='_blank' style='color:#8ab4f8;text-decoration:none;font-weight:600'>www.kecxubot.com</a>
+        <a href='https://hirelyzer.com' target='_blank' style='color:#8ab4f8;text-decoration:none;font-weight:600'>www.hirelyzer.com</a>
       </div>
     </div>
     <div style='padding:32px;background:linear-gradient(135deg,rgba(79,70,229,0.1),rgba(59,130,246,0.05));border-radius:16px;border:1px solid rgba(79,70,229,0.2)'>
       <div style='font-size:18px;font-weight:700;margin-bottom:12px;color:rgba(255,255,255,0.95)'>🚀 Ready to Transform Your Career?</div>
-      <p style='color:rgba(255,255,255,0.8);margin-bottom:20px'>Join thousands of professionals who have already upgraded their resumes with KecxuBot</p>
+      <p style='color:rgba(255,255,255,0.8);margin-bottom:20px'>Join thousands of professionals who have already upgraded their resumes with HIRELYZER</p>
       <a href="https://hirelyzer-ijkfwqydjqz3wqyvjkhegw.streamlit.app/" target="_blank" class='btn' style='text-decoration:none'>
         ✨ Start Your Journey Now
       </a>
@@ -640,7 +640,7 @@ contact_html = """
 </div>
 <div class='footer'>
   <div style='max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px'>
-    <div>© 2025 KecxuBot. All rights reserved.</div>
+    <div>© 2025 HIRELYZER. All rights reserved.</div>
     <div style='display:flex;gap:24px'>
       <a href='#' style='color:rgba(255,255,255,0.6);text-decoration:none;font-size:14px'>Privacy Policy</a>
       <a href='#' style='color:rgba(255,255,255,0.6);text-decoration:none;font-size:14px'>Terms of Service</a>
