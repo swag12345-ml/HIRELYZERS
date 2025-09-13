@@ -51,6 +51,9 @@ html, body, [class*="css"]{
 }
 .typewriter{display:inline-block;overflow:hidden;white-space:nowrap;}
 .typewriter-text{border-right:2px solid rgba(255,255,255,0.6);padding-right:6px}
+
+/* small hover affordance */
+#ats-card:hover { transform: translateY(-3px); transition: transform 180ms ease; }
 """)
 local_css(css)
 
@@ -87,8 +90,8 @@ hero_html = """
     </div>
   </div>
 
-  <!-- ✅ Animated ATS card -->
-  <div class='hero-right' onclick="animateScore()">
+  <!-- ATS card now has id="ats-card" and no inline onclick -->
+  <div class='hero-right' id='ats-card'>
     <div style='border-radius:14px;padding:18px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.2));box-shadow:0 20px 60px rgba(0,0,0,0.6);border:1px solid rgba(255,255,255,0.03)'>
       <div style='display:flex;justify-content:space-between;align-items:center'>
         <div style='font-weight:800'>Live ATS Preview</div>
@@ -104,8 +107,9 @@ hero_html = """
           <div style='padding:8px 10px;border-radius:999px;background:rgba(0,0,0,0.3);font-size:12px'>Postgres</div>
         </div>
         <div style='height:14px'></div>
+
         <div style='font-size:12px;color:rgba(255,255,255,0.6);margin-bottom:6px'>ATS Score</div>
-        <div style='width:100%;height:14px;background:rgba(255,255,255,0.08);border-radius:8px;overflow:hidden;position:relative'>
+        <div id='progress-container' style='width:100%;height:14px;background:rgba(255,255,255,0.08);border-radius:8px;overflow:hidden;position:relative'>
           <div id='ats-bar' style='height:100%;width:0%;background:linear-gradient(90deg,#ff6a88,#5f2c82);border-radius:8px;'></div>
         </div>
         <div style='text-align:right;font-weight:800;font-size:18px;margin-top:6px' id='ats-score'>0%</div>
@@ -115,6 +119,7 @@ hero_html = """
 </div>
 
 <script>
+// Typewriter (unchanged)
 const phrases = [
   'Upload your resume — get ATS-ready feedback in seconds.',
   'Rewrite bullets for impact. Fix grammar & bias automatically.',
@@ -134,25 +139,55 @@ function show(){
 }
 if(el) show();
 
-// ✅ ATS Score animation (runs each time card is clicked)
-function animateScore(){
-  let target = 78;
-  let bar = document.getElementById("ats-bar");
-  let scoreText = document.getElementById("ats-score");
-  let current = 0;
-  bar.style.width = "0%";
-  scoreText.innerText = "0%";
+// Robust ATS animation function
+function animateScore(target=78, duration=1400){
+  const bar = document.getElementById('ats-bar');
+  const scoreText = document.getElementById('ats-score');
+  const container = document.getElementById('progress-container');
 
-  let interval = setInterval(()=>{
-    if(current >= target){
-      clearInterval(interval);
+  if(!bar || !scoreText || !container) return;
+
+  // Reset
+  bar.style.transition = 'none';
+  bar.style.width = '0%';
+  scoreText.innerText = '0%';
+
+  // force reflow so the browser applies the width=0 before we animate to target
+  void bar.offsetWidth;
+
+  // Apply transition and set to target width
+  bar.style.transition = 'width ' + duration + 'ms cubic-bezier(.2,.9,.3,1)';
+  // small timeout to ensure transition takes effect
+  setTimeout(()=> { bar.style.width = target + '%'; }, 20);
+
+  // Use requestAnimationFrame to smoothly update the number label across the same duration
+  const startTime = performance.now();
+  function update(now){
+    const elapsed = now - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+    const current = Math.round(progress * target);
+    scoreText.innerText = current + '%';
+    if(progress < 1){
+      requestAnimationFrame(update);
     } else {
-      current++;
-      bar.style.width = current + "%";
-      scoreText.innerText = current + "%";
+      // ensure final value exact
+      scoreText.innerText = target + '%';
     }
-  }, 25);
+  }
+  requestAnimationFrame(update);
 }
+
+// Attach click listener to the card so it animates every click
+const card = document.getElementById('ats-card');
+if(card){
+  card.addEventListener('click', function(){
+    // can pass different targets/durations dynamically if desired
+    animateScore(78, 1400);
+  });
+}
+
+// Optionally: animate once on load (comment out if you don't want auto-run)
+// animateScore(78, 1400);
 </script>
 """
 st.markdown(hero_html, unsafe_allow_html=True)
