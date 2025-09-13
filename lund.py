@@ -30,7 +30,6 @@ html, body, [class*="css"]{
   color: rgba(255,255,255,0.95);
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
 }
-/* Hero + features + footer … */
 .hero{display:flex;gap:24px;align-items:center;padding:48px 24px;border-radius:18px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));box-shadow:var(--card-shadow);}
 .hero-left{flex:1;}
 .hero-right{width:420px;min-width:320px}
@@ -50,13 +49,12 @@ html, body, [class*="css"]{
   .features{grid-template-columns:repeat(1,1fr)}
   .h-title{font-size:32px}
 }
-/* Typewriter */
 .typewriter{display:inline-block;overflow:hidden;white-space:nowrap;}
 .typewriter-text{border-right:2px solid rgba(255,255,255,0.6);padding-right:6px}
 """)
 local_css(css)
 
-# ---------------------- Page content ----------------------
+# ---------------------- Top Nav ----------------------
 st.markdown("""
 <div style='display:flex;justify-content:space-between;align-items:center;padding:10px 6px;margin-bottom:8px;'>
   <div style='display:flex;align-items:center;gap:12px'>
@@ -67,7 +65,6 @@ st.markdown("""
     <a href='#features' style='text-decoration:none;color:rgba(255,255,255,0.75);font-weight:600'>Features</a>
     <a href='#pricing' style='text-decoration:none;color:rgba(255,255,255,0.75);font-weight:600'>Pricing</a>
     <a href='#contact' style='text-decoration:none;color:rgba(255,255,255,0.75);font-weight:600'>Contact</a>
-    <!-- ✅ fixed button redirect -->
     <a href="https://hirelyzer-ijkfwqydjqz3wqyvjkhegw.streamlit.app/" target="_blank">
       <button class='btn'>Open App</button>
     </a>
@@ -83,28 +80,10 @@ hero_html = """
     <div class='h-title'>Make Resumes that Pass — and People who Hire.</div>
     <div class='h-sub'><span class='typewriter'><span id='typewriter' class='typewriter-text'></span></span></div>
     <div class='cta-row'>
-      <!-- ✅ fixed button redirect -->
       <a href="https://hirelyzer-ijkfwqydjqz3wqyvjkhegw.streamlit.app/" target="_blank">
         <button class='btn'>✨ Launch App</button>
       </a>
       <button class='btn secondary' onclick="window.location='#pricing'">View Plans</button>
-    </div>
-    <div class='features' style='margin-top:22px' id='features'>
-      <div class='feature-card'>
-        <div style='font-size:20px'>📄 Resume Analyzer</div>
-        <div class='feature-title'>ATS-ready scoring & AI rewrite</div>
-        <div class='feature-desc'>Upload resumes, get ATS score, grammar, bias detection & AI suggestions.</div>
-      </div>
-      <div class='feature-card'>
-        <div style='font-size:20px'>📝 Builder & Cover Letter</div>
-        <div class='feature-title'>Templates, AI preview & export</div>
-        <div class='feature-desc'>Create resumes with templates, auto-generate cover letters, and export.</div>
-      </div>
-      <div class='feature-card'>
-        <div style='font-size:20px'>🔍 Job Gateway</div>
-        <div class='feature-title'>Search & market insights</div>
-        <div class='feature-desc'>Direct search links plus premium market & salary insights.</div>
-      </div>
     </div>
   </div>
   <div class='hero-right'>
@@ -153,3 +132,70 @@ if(el) show();
 </script>
 """
 st.markdown(hero_html, unsafe_allow_html=True)
+
+# ---------------------- Features Section ----------------------
+features_html = """
+<div id='features' style='padding:60px 20px'>
+  <h2 style='font-size:36px;font-weight:800;margin-bottom:24px;text-align:center'>Features</h2>
+  <div style='display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px'>
+    <div class='feature-card'>
+      <div style='font-size:22px'>📄 Resume Analyzer</div>
+      <div class='feature-title'>ATS Optimization</div>
+      <div class='feature-desc'>Upload your resume and instantly see your ATS score with AI-powered feedback for keywords, grammar, and bias detection.</div>
+    </div>
+    <div class='feature-card'>
+      <div style='font-size:22px'>📝 Smart Builder</div>
+      <div class='feature-title'>Resume + Cover Letter</div>
+      <div class='feature-desc'>Use modern templates, generate tailored cover letters with AI, and export in PDF or DOCX formats.</div>
+    </div>
+    <div class='feature-card'>
+      <div style='font-size:22px'>🔍 Job Gateway</div>
+      <div class='feature-title'>Market Insights</div>
+      <div class='feature-desc'>Explore job opportunities, salary benchmarks, and course recommendations aligned with your career goals.</div>
+    </div>
+  </div>
+</div>
+"""
+st.markdown(features_html, unsafe_allow_html=True)
+
+# ---------------------- Pricing Section ----------------------
+pricing_html = """
+<div id='pricing' style='padding:60px 20px;background:rgba(255,255,255,0.02);border-radius:14px;margin-top:40px'>
+  <h2 style='font-size:36px;font-weight:800;margin-bottom:24px;text-align:center'>Pricing</h2>
+  <div style='display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;max-width:900px;margin:0 auto'>
+    <div class='feature-card' style='text-align:center'>
+      <div style='font-size:22px;font-weight:700'>Free</div>
+      <div style='font-size:14px;color:rgba(255,255,255,0.7);margin:10px 0'>Basic ATS scoring & resume analysis</div>
+      <div style='font-size:26px;font-weight:800;margin:10px 0'>$0</div>
+      <button class='btn secondary'>Get Started</button>
+    </div>
+    <div class='feature-card' style='text-align:center;border:2px solid rgba(255,255,255,0.15)'>
+      <div style='font-size:22px;font-weight:700'>Pro</div>
+      <div style='font-size:14px;color:rgba(255,255,255,0.7);margin:10px 0'>Full resume builder, AI rewrites, job insights</div>
+      <div style='font-size:26px;font-weight:800;margin:10px 0'>$9 / mo</div>
+      <button class='btn'>Choose Pro</button>
+    </div>
+    <div class='feature-card' style='text-align:center'>
+      <div style='font-size:22px;font-weight:700'>Enterprise</div>
+      <div style='font-size:14px;color:rgba(255,255,255,0.7);margin:10px 0'>For recruiters & teams with bulk hiring tools</div>
+      <div style='font-size:26px;font-weight:800;margin:10px 0'>Custom</div>
+      <button class='btn secondary'>Contact Sales</button>
+    </div>
+  </div>
+</div>
+"""
+st.markdown(pricing_html, unsafe_allow_html=True)
+
+# ---------------------- Contact Section ----------------------
+contact_html = """
+<div id='contact' style='padding:60px 20px;margin-top:40px'>
+  <h2 style='font-size:36px;font-weight:800;margin-bottom:24px;text-align:center'>Contact Us</h2>
+  <div style='max-width:600px;margin:0 auto;text-align:center;color:rgba(255,255,255,0.7)'>
+    <p>Have questions or need support? We'd love to hear from you.</p>
+    <p>📧 Email: <a href='mailto:support@kecxubot.com' style='color:#8ab4f8'>support@kecxubot.com</a></p>
+    <p>🌐 Website: <a href='https://kecxubot.com' target='_blank' style='color:#8ab4f8'>www.kecxubot.com</a></p>
+  </div>
+</div>
+<div class='footer'>© 2025 KecxuBot. All rights reserved.</div>
+"""
+st.markdown(contact_html, unsafe_allow_html=True)
