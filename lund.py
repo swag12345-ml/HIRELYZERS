@@ -413,15 +413,7 @@ html, body, [class*="css"]{
 local_css(css)
 
 # ---------------------- Scroll Progress Indicator ----------------------
-st.markdown("""
-<div class="scroll-indicator" id="scrollIndicator"></div>
-<div class="parallax-bg">
-  <div class="floating-element">🚀</div>
-  <div class="floating-element">⭐</div>
-  <div class="floating-element">💼</div>
-  <div class="floating-element">📊</div>
-</div>
-""", unsafe_allow_html=True)
+
 
 # ---------------------- Enhanced Top Nav ----------------------
 st.markdown("""
@@ -650,4 +642,5 @@ contact_html = """
 </div>
 """
 st.markdown(contact_html, unsafe_allow_html=True)
+
 
