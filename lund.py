@@ -485,6 +485,7 @@ hero_html = """
   </div>
 </div>
 </div>
+
 <script>
 const phrases = [
   '🚀 Upload your resume — get ATS-ready feedback in seconds.',
